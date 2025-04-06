@@ -593,7 +593,7 @@ SIP CONFIGURATION
 conf t
  voice service voip
   allow-connections h323 to sip
-          
+  !        
   allow-connections sip to h323
   allow-connections sip to sip
   supplementary-service h450.12
@@ -604,32 +604,32 @@ conf t
 !
  voice register global
   mode cme
-  source-address 10._.100.8 port 5060
+  source-address 10.51.100.8 port 5060
   max-dn 12
   max-pool 12
   authenticate register
   create profile sync
  voice register dn 1
-   number ____
+   number 5151
    allow watch
-   name _______
+   name 5151
  voice register dn 2
-   number ___
+   number 1245
    allow watch
-   name _______
+   name 1245
 !
   voice register pool 1
-    id mac ____.____.____
+	    id mac 0298.0
     number 1 dn 1
     dtmf-relay sip-notify
-    username ____ password ____
+    username 5151 password 5151
     codec g711ulaw
 !
   voice register pool 2
-    id mac ____.____.____
+    id mac 1826.5432.5ced
     number 1 dn 2
     dtmf-relay sip-notify
-    username ____ password ____
+    username 1245 password 1245
     codec g711ulaw
 !
 *******call other countries!!!********
