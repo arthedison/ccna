@@ -465,9 +465,9 @@ route  add  200.0.0.0   mask  255.255.255.0   10._.1.4
 config t
 dial-peer voice 69 voip
  service rivanaa out-bound
- destination-pattern _69
- session target ipv4:10._.100.8
- incoming called-number _69
+ destination-pattern 5169
+ session target ipv4:10.51.100.8
+ incoming called-number 5169
  dtmf-relay h245-alphanumeric
  codec g711ulaw
  no vad
@@ -490,13 +490,13 @@ application
   param max-time-vm-retry 2
   param voice-mail 1234
   param max-time-call-retry 700
-  param aa-pilot _69
+  param aa-pilot 5169
  service rivanqueue flash:app-b-acd-3.0.0.2.tcl
   param queue-len 15
-  param aa-hunt1 _00
-  param aa-hunt2 _77
-  param aa-hunt3 _01
-  param aa-hunt4 _33
+  param aa-hunt1 5100
+  param aa-hunt2 5177
+  param aa-hunt3 5101
+  param aa-hunt4 5133
   param queue-manager-debugs 1
   param number-of-hunt-grps 4
 ****************************************************************************
@@ -619,7 +619,7 @@ conf t
    name 1245
 !
   voice register pool 1
-	    id mac 0298.0
+	id mac 2E05.F1B6.9216
     number 1 dn 1
     dtmf-relay sip-notify
     username 5151 password 5151
