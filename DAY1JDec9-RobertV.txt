@@ -619,7 +619,7 @@ conf t
    name 1245
 !
   voice register pool 1
-	id mac 2E05.F1B6.9216
+	id mac 2224.e410.d66a
     number 1 dn 1
     dtmf-relay sip-notify
     username 5151 password 5151
