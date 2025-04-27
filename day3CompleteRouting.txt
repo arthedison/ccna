@@ -1,14 +1,38 @@
-Day3 Network Engineer
+Day3 Network Engineer : job interview questions for L1/l2 NOC-MSP positions.
+
 3.1 Interpret the components of routing table
-3.1.a Routing protocol code
-3.1.b Prefix
-3.1.c Network mask
-3.1.d Next hop
-3.1.e Administrative distance
-3.1.f Metric
-3.1.g Gateway of last resort
+answer: a routing table is a database/forward information base: forward information base that is used by routing devices, path to take to go to remote networks:
+
+3.1.a Routing protocol code: exlusive on, cisco, juniper.fortinet, palo alto
+answer: 
+Mr.bodds = mpls,Rip, BGP, OSPF, D(eigrp), default, static routing
+
+3.1.b Prefix:i a network prefix is a network route:
+show ip route connected | inc c
+3.1.c Network mask : is a portion of the IP address that separeates the host nad networkID:
+the IP address of a PC is: 192.168.10.102/27, what is the network address:0,32,64,96[network Address]
+the IP address of a PC is: 192.168.10.55/28, what is the network address:0,16,32,48[network Address]
+the IP address of a PC is: 192.168.10.43/29
+
+3.1.d Next hop: is the IP address of an ingress router:
+c:\tracert www.x=art.com
+
+
+3.1.e Administrative distance: BUMBAY interviewer
+BGP = 20e, 200i, rip = 120, eigrp = 90, OSPF = 110, ISIS = 115  static route = 1
+
+3.1.f Metric: used in routing for Cost nad Distance: "how much"
+OSPF = bandwidth, RIP = Hopcount, EIGRP = BW+Delay
+BGP = Path Attributes
+
+3.1.g Gateway of last resort: aka "default Gateway" is a catch ll Route for unknown Networks
+			Parang: GMG: "google mo gago", if NONE "no internet
 
 3.2 Determine how a router makes a forwarding decision by default
+
+
+
+
 3.2.a Longest prefix match
 3.2.b Administrative distance
 3.2.c Routing protocol metric
@@ -19,12 +43,12 @@ Day3 Network Engineer
 3.3.c Host route
 3.3.d Floating static
 
+
 3.4 Configure and verify single area OSPFv2
 3.4.a Neighbor adjacencies
 3.4.b Point-to-point
 3.4.c Broadcast (DR/BDR selection)
 3.4.d Router ID
-
 3.5 Describe the purpose, functions, and concepts of first hop redundancy protocols
 Task1: Review of Routing FUndamentals.
 rule: ping dikit, no dikit, no ping
@@ -104,17 +128,17 @@ int e1/0
 A2: creating primary and backup default route:
 config t
 ip route 0.0.0.0 0.0.0.0 192.168.1.130 1
-ip route 0.0.0.0 0.0.0.0 192.168.1.129  2
+ip route 0.0.03.0 0.0.0.0 192.168.1.129  2
 do sh ip route static
 p1:
 config t
 int e0/0
  ip add 10.2.1.101 255.255.255.0
  no shut
-P1: Creating Floating STATIC routes on p1 for vlan 200 and vlan 20:
+P1: Creating  STATIC routes USING LONGEST PREFIX on p1 for vlan 200 and vlan 20:
 config t
 ip route  192.168.1.128 255.255.255.224 10.2.1.1 1
-ip route  192.168.1.130 255.255.255.255 10.2.1.2 10
+ip route  192.168.1.130 255.255.255.255 10.2.1.2 
 ! /32 is better than /27: longest prefix Rule.
 do sh ip route static
 p2:
